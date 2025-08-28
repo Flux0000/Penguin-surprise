@@ -1,1 +1,2 @@
 Guys if it reaches to you i means the github community its just a fun project i created for time pass infact im not a coder (all thanks to chatgpt 😆 🙏) and yay maybe in future i will be making changes to it and yay feel free to come up with ideas for this. 
+One more thing i forgot to tell that the index2.html is also working but i got error when i was trying to host the website with that file so i created the index.html. Hope you get it and enjoy.
