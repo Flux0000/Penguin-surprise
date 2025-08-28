@@ -1,0 +1,1 @@
+Guys if it reaches to you i means the github community its just a fun project i created for time pass infact im not a coder (all thanks to chatgpt 😆 🙏) and yay maybe in future i will be making changes to it and yay feel free to come up with ideas for this. 
