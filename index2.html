@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Penguin Surprise 💌</title>
+<style>
+  body { text-align: center; background: #a0e7ff; font-family: Arial; overflow-x: hidden; }
+  #penguin {
+    width: 150px;
+    transition: all 1s;
+    margin-top: 50px;
+    animation: bounce 1.5s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  #speech { font-size: 20px; margin: 20px; }
+  button { padding: 10px 20px; font-size: 18px; margin: 10px; cursor: pointer; border-radius: 8px; border: none; background: #ff66aa; color: white; }
+  #gift {
+    font-size: 36px;
+    color: red;
+    display: none;
+    margin-top: 20px;
+    animation: giftOpen 1s ease forwards;
+  }
+  @keyframes giftOpen {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .animal-gift {
+    width: 100px;
+    margin-top: 20px;
+    display: none;
+    animation: giftOpen 1s ease forwards;
+  }
+</style>
+</head>
+<body>
+
+<img id="penguin" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRthfFZVAbWyRqidU-MHBv1ymAOL34K8no7Rg&s" alt="Penguin">
+<div id="speech">Hey! Do you want a surprise gift?</div>
+<div id="buttons">
+  <button onclick="firstQuestion(true)">Yes</button>
+  <button onclick="firstQuestion(false)">No</button>
+</div>
+
+<!-- Gift display -->
+<div id="gift"></div>
+<img id="animalGift" class="animal-gift" src="" alt="Animal Gift">
+
+<script>
+const gifts = [
+  {type: "text", content: "❤ A heart just for you!"},
+  {type: "text", content: "🍫 A sweet chocolate!"},
+  {type: "animal", src: "https://media.tenor.com/BarQi8-yRqsAAAAe/larry.png"}, // cat
+  {type: "animal", src: "https://cdn.shopify.com/s/files/1/0530/3762/9610/files/Baby_bunny_in_the_hands_of_person_1024x1024.png?v=1698224268"}, // bunny
+  {type: "text", content: "🌹 A rose just for you!"}
+];
+
+function firstQuestion(answer) {
+    const penguin = document.getElementById('penguin');
+    const speech = document.getElementById('speech');
+    const buttons = document.getElementById('buttons');
+    const gift = document.getElementById('gift');
+    const animalGift = document.getElementById('animalGift');
+
+    gift.style.display = "none";
+    animalGift.style.display = "none";
+
+    if(answer) {
+        speech.innerText = "Do you like me?";
+        buttons.innerHTML = `
+          <button onclick="secondQuestion(true)">Yes</button>
+          <button onclick="secondQuestion(false)">No</button>
+        `;
+    } else {
+        speech.innerText = "Ohh... I’m hurt now! 😢";
+        penguin.style.transform = "translateX(500px) rotate(360deg)";
+        buttons.style.display = "none";
+    }
+}
+
+function secondQuestion(answer) {
+    const penguin = document.getElementById('penguin');
+    const speech = document.getElementById('speech');
+    const buttons = document.getElementById('buttons');
+    const gift = document.getElementById('gift');
+    const animalGift = document.getElementById('animalGift');
+
+    if(answer) {
+        // Pick a random gift
+        const randomGift = gifts[Math.floor(Math.random() * gifts.length)];
+
+        if(randomGift.type === "text") {
+            gift.innerText = randomGift.content;
+            gift.style.display = "block";
+        } else if(randomGift.type === "animal") {
+            animalGift.src = randomGift.src;
+            animalGift.style.display = "block";
+        }
+
+        speech.innerText = "Yay! Here's your surprise!";
+        buttons.style.display = "none";
+    } else {
+        speech.innerText = "Teehee 😛 average chotu behaviour!";
+        penguin.style.transform = "translateX(500px) rotate(360deg)";
+        buttons.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>
